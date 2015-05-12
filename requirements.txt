@@ -1,0 +1,7 @@
+Django==1.7.6
+MySQL-python
+django-reversion
+pygments
+django-pagedown
+django-compressor
+django-ckeditor==4.4.7

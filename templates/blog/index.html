@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load myapp_markup %}
+{% load bootstrap_pagination %}
+
+{% block description %}自娱自乐{%endblock%} 
+{% block title %}雨人{% endblock %}
+{% block content %}
+    {% for blog in blogs %}
+    <!-- blog entry -->
+    <h3>
+        <a href="{{ blog.get_absolute_url }}">{{blog.title}}</a>
+    </h3>
+    {% comment %} 
+    <p class="lead">by <a>{{blog.author.username}}</a> </p>
+    {% include "widget/blog-info.html" with blog=blog only %}
+    {% endcomment %}
+    <div class="article-preview">
+    {% autoescape off %}
+    {{blog.snippet}}
+    {% endautoescape %}
+    <a href="{{ blog.get_absolute_url }}" class="read-more">显示全部<span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+
+   <!-- <a class="btn btn-primary" href="{{ blog.get_absolute_url }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+-->
+    <hr>
+    {% endfor %} 
+    <!-- pager -->
+    {%bootstrap_paginate blogs %}
+{% endblock %}
+
+{% block panel %} {%include "widget/panel.html"%}{%endblock%}

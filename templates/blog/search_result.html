@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block description %}文章存档{%endblock%} 
+{% block title %}文章存档{% endblock %}
+{% block content %}
+
+    {% if articles %}
+        <p>your search for:<strong> {{ query }} </strong> </p>
+        <ul>
+            {% for blog in articles %}
+                <li><a href="{{ blog.get_absolute_url }}">{{blog.title}}</a></li>
+            {% endfor %}
+        </ul>
+    {%  else %}
+            <p>No articles matched your search criteria.</p>
+    {% endif %}
+{% endblock %}
+{% block panel %} {%include "widget/panel.html"%}{%endblock%}

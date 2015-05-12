@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <center>
+        <h2>{{ object.title }}</h2>
+        <p>
+        {{ object.author.username }} | {{  object.tags.all|join:", " }} | {{ object.create_time }}
+        </p>
+        {{ object.content }}
+    </center>
+
+{% endblock %}
